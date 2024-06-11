@@ -22,7 +22,7 @@ const useFetchUser = (userId) => {
         }
 
         try {
-            const response = await fetch(`users/${uri}/${userId}`);
+            const response = await fetch(`${uri}/users/${userId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch user data');
             }

@@ -5,19 +5,21 @@ const UserDetails = ({ userId }) => {
     const { user, loading, error, refetch } = useFetchUser(userId);
 
     return (
-        <div>
-            {loading && <p>Loading...</p>}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div className="user-details-container">
+            <div className="user-details-header">
+                <h2>User Details</h2>
+                <button className="refresh-button" onClick={() => refetch()}>Refresh</button>
+            </div>
+            {loading && <p className="user-details-loading">Loading...</p>}
+            {error && <p className="user-details-error">{error}</p>}
             {user && (
-                <div>
-                    <h2>User Details</h2>
-                    <p>ID: {user.id}</p>
-                    <p>Name: {user.name}</p>
-                    <p>Email: {user.email}</p>
+                <div className="user-details-body">
+                    <p><strong>ID:</strong> {user.id}</p>
+                    <p><strong>Name:</strong> {user.name}</p>
+                    <p><strong>Email:</strong> {user.email}</p>
                     {/* Add other user details as needed */}
                 </div>
             )}
-            <button onClick={refetch}>Refresh</button>
         </div>
     );
 };
