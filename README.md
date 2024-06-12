@@ -36,7 +36,7 @@ Access the folder containing the current branch project: `cd branchName`
 
 Start the project the first time by running the command: `npm install`.
 
-Run the project by running this command: `npm start`
+Run the project by running this command: `npm run dev`
 Runs the app in development mode. Open http://localhost:3000 to view it in the browser.
 
 ## Develop with
