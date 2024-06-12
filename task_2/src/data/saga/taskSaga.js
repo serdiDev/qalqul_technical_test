@@ -9,13 +9,16 @@ import {
     updateTaskSuccess, updateTaskFailure,
     removeTaskSuccess, removeTaskFailure
 } from '../actions/taskActions';
+import {uri} from "../../config/api";
+
+const endpoint = "products"
 
 // Simulating API calls with dummy functions
 const api = {
-    fetchTasks: () => fetch('/api/tasks').then(response => response.json()),
-    addTask: (task) => fetch('/api/tasks', { method: 'POST', body: JSON.stringify(task) }).then(response => response.json()),
-    updateTask: (task) => fetch(`/api/tasks/${task.id}`, { method: 'PUT', body: JSON.stringify(task) }).then(response => response.json()),
-    removeTask: (taskId) => fetch(`/api/tasks/${taskId}`, { method: 'DELETE' }).then(() => taskId)
+    fetchTasks: () => fetch(`${uri}/${endpoint}`).then(response => response.json()),
+    addTask: (task) => fetch(`${uri}/${endpoint}`, { method: 'POST', body: JSON.stringify(task) }).then(response => response.json()),
+    updateTask: (task) => fetch(`${uri}/${endpoint}/${task.id}`, { method: 'PUT', body: JSON.stringify(task) }).then(response => response.json()),
+    removeTask: (taskId) => fetch(`${uri}/${endpoint}/${taskId}`, { method: 'DELETE' }).then(() => taskId)
 };
 
 function* fetchTasks() {

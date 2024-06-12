@@ -1,0 +1,1 @@
+export const uri = 'https://dummyjson.com/api'
