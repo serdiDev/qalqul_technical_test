@@ -39,6 +39,32 @@ io.on('connection', (socket) => {
         }
     });
 
+    // Add a new document
+    socket.on('addDocument', ({ title }) => {
+        const newDocument = {
+            id: documents.length + 1,
+            title: title,
+            content: ''
+        };
+        documents.push(newDocument);
+        io.emit('documentAdded', newDocument);
+    });
+
+    // Update the title of a document
+    socket.on('updateDocumentTitle', ({ docId, newTitle }) => {
+        const document = documents.find(doc => doc.id === docId);
+        if (document) {
+            document.title = newTitle;
+            io.emit('documentTitleUpdated', { docId, newTitle });
+        }
+    });
+
+    // Delete a document
+    socket.on('deleteDocument', ({ docId }) => {
+        documents = documents.filter(doc => doc.id !== docId);
+        io.emit('documentDeleted', docId);
+    });
+
     socket.on('disconnect', () => {
         console.log('Client disconnected');
     });

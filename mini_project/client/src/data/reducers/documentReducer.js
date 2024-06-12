@@ -4,7 +4,7 @@ import {
     FETCH_DOCUMENTS_SUCCESS,
     FETCH_DOCUMENTS_FAILURE,
     SET_CURRENT_DOCUMENT,
-    UPDATE_DOCUMENT_CONTENT
+    UPDATE_DOCUMENT_CONTENT, ADD_DOCUMENT, UPDATE_DOCUMENT_TITLE, DELETE_DOCUMENT
 } from '../actions/types/documentTypes';
 
 const initialState = {
@@ -30,6 +30,23 @@ const documentReducer = (state = initialState, action) => {
                 documents: state.documents.map(doc =>
                     doc.id === action.payload.docId ? { ...doc, content: action.payload.content } : doc
                 )
+            };
+        case ADD_DOCUMENT:
+            return {
+                ...state,
+                documents: [...state.documents, action.payload]
+            };
+        case UPDATE_DOCUMENT_TITLE:
+            return {
+                ...state,
+                documents: state.documents.map(doc =>
+                    doc.id === action.payload.docId ? { ...doc, title: action.payload.title } : doc
+                )
+            };
+        case DELETE_DOCUMENT:
+            return {
+                ...state,
+                documents: state.documents.filter(doc => doc.id !== action.payload.docId)
             };
         default:
             return state;
