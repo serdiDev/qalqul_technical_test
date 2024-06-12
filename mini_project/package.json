@@ -1,0 +1,17 @@
+{
+  "name": "qalqul",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "install": "concurrently \"cd ./server && npm install\" \"cd ./client && npm install --legacy-peer-deps\"",
+    "dev": "concurrently --kill-others \"cd ./server && npm run serve\" \"cd ./client && npm run start\""
+  },
+  "keywords": [],
+  "author": "serdiDev",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
