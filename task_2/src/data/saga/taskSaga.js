@@ -10,7 +10,7 @@ import {
 } from '../actions/taskActions';
 import {uri} from "../../config/api";
 
-const endpoint = "products"
+const endpoint = "tasks"
 
 // Simulating API calls with dummy functions
 const api = {

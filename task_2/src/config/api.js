@@ -1,1 +1,1 @@
-export const uri = 'https://dummyjson.com/api'
+export const uri = 'http://localhost:8000'
