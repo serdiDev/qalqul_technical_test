@@ -3,6 +3,7 @@ import {uri} from "../config/api";
 
 const cache = {};
 
+const endpoint = "users";
 const useFetchUser = (userId) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -22,7 +23,7 @@ const useFetchUser = (userId) => {
         }
 
         try {
-            const response = await fetch(`${uri}/users/${userId}`);
+            const response = await fetch(`${uri}/${endpoint}/${userId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch user data');
             }

@@ -15,7 +15,7 @@ const UserDetails = ({ userId }) => {
             {user && (
                 <div className="user-details-body">
                     <p><strong>ID:</strong> {user.id}</p>
-                    <p><strong>Name:</strong> {user.firstName} {user.lastName}</p>
+                    <p><strong>Name:</strong> {user.name}</p>
                     <p><strong>Email:</strong> {user.email}</p>
                     {/* Add other user details as needed */}
                 </div>
