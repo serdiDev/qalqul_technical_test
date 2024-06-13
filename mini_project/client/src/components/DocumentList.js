@@ -44,19 +44,11 @@ const DocumentList = () => {
     };
 
     return (
-        <div>
-            <h2 style={{ textAlign: 'center' }}>Document List</h2>
+        <div className="document-list">
+            <h2 style={{ textAlign: 'center' }}>Documents</h2>
             {loading && <p>Loading...</p>}
             {error && <p>{error.message}</p>}
-            <ul>
-                {documents.map(doc => (
-                    <li key={doc.id}>
-                        <span onClick={() => dispatch(setCurrentDocument(doc))}>{doc.title}</span>
-                        <button onClick={() => handleDeleteDocument(doc.id)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
-            <div>
+            <div className="input-container">
                 <input
                     type="text"
                     value={newTitle}
@@ -65,6 +57,24 @@ const DocumentList = () => {
                 />
                 <button onClick={handleAddDocument}>Add Document</button>
             </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {documents.map(doc => (
+                    <tr key={doc.id}>
+                        <td><span onClick={() => dispatch(setCurrentDocument(doc))}>{doc.title}</span></td>
+                        <td style={{textAlign: "right"}}>
+                            <button style={{backgroundColor: "#b70404"}} onClick={() => handleDeleteDocument(doc.id)}>Delete</button>
+                        </td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
         </div>
     );
 };
